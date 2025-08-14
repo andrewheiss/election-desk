@@ -1,0 +1,13 @@
+---
+format:
+  gfm:
+    wrap: preserve
+---
+
+## General process
+
+This process has two independent moving parts:
+
+1. The `etl-pipeline` project runs every X minutes and is in charge of collecting the most recent data. With the magic of {targets}, it will only process remote data that has changed since the last time the pipeline ran. The final outputs (maps, results table, and reporting status) are stored remotely in an S3 bucket.
+
+2. The `website` project runs every Y minutes and uses {targets} to pull the latest data from the S3 bucket. It then re-builds the Quarto website if needed.
