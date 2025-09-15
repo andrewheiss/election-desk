@@ -1,0 +1,11 @@
+---
+title: "posit::conf(2025)"
+date: 2025-09-18T10:20-0400
+published-title: "Presented in Atlanta, Georgia"
+---
+
+## Slides
+
+<div class="ratio ratio-16x9">
+<iframe class="slide-deck" src="https://docs.google.com/presentation/d/e/2PACX-1vSg0VCDb-NLxmwoDLVAhH4Ta4lLaH5ZqOQCVh34dYC_QcZkhhokVlnYyuOYgrJ_5uMvaGfVaVcwt59V/pubembed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</div>

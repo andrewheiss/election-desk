@@ -20,12 +20,20 @@ website:
     collapse-below: lg
     toggle-position: right
     left:
-    - text: Presidential
-      href: presidential.qmd
-    - text: Congressional
-      href: congressional.qmd
-    - text: Legislative
-      href: legislative.qmd
+      - text: Presidential
+        href: presidential.qmd
+      - text: Congressional
+        href: congressional.qmd
+      - text: Legislative
+        href: legislative.qmd
+
+    right:
+      - text: "posit::conf(2025)"
+        href: posit-conf-2025.qmd
+      - icon: github
+        aria-label: github
+        href: https://github.com/andrewheiss/election-desk
+
 
 date-format: "MMMM D, YYYY [at] h:mm A z"
 published-title: "Most recent update"

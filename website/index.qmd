@@ -1,3 +1,8 @@
 ---
-title: "Example election"
+title: "DIY Election Desk"
 ---
+
+## Original Idaho sites
+
+- [Primary election](https://archive.voteidaho.gov/results/2024/primary/) (May 2024)
+- [General election](https://archive.voteidaho.gov/results/2024/general/) (November 2024)
