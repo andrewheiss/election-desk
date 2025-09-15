@@ -64,10 +64,12 @@ list(
     get_from_db(testing_db),
     change = check_db_update()
   ),
-  tar_change(
+  tar_target(
     last_updated,
-    check_db_update(),
-    change = check_db_update(),
+    {
+      db_results  # Force a dependency
+      check_db_update()
+    },
     repository = remote_repo
   ),
 
