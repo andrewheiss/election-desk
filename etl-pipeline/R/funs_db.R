@@ -95,6 +95,16 @@ db_connect <- function() {
 check_db_update <- function() {
   suppressPackageStartupMessages(library(dbplyr))
 
+  # If the database doesn't exist yet, {targets} will get mad when running
+  # check_db_update() as the change function for tar_change(), since... it
+  # doesn't exist yet. This sends FALSE to tar_change() if the databse doesn't
+  # exist yet.
+  if (Sys.getenv("PRODUCTION") != "true") {
+    if (!file.exists("testing_db.duckdb")) {
+      return(FALSE)
+    }
+  }
+
   con <- db_connect()
 
   last_update <- tbl(con, I("meta")) |>
