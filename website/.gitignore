@@ -4,3 +4,6 @@
 .Ruserdata
 
 .quarto/
+/.quarto/
+
+_site/

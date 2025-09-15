@@ -1,0 +1,46 @@
+project:
+  type: website
+  preview:
+    port: 3333
+
+website:
+  search: false
+  back-to-top-navigation: true
+  title: "Example election results"
+
+  announcement:
+    icon: shield-exclamation
+    dismissable: false
+    content: Unofficial results
+    type: warning
+    position: below-navbar
+
+  navbar:
+    pinned: true
+    collapse-below: lg
+    toggle-position: right
+    left:
+    - text: Presidential
+      href: presidential.qmd
+    - text: Congressional
+      href: congressional.qmd
+    - text: Legislative
+      href: legislative.qmd
+
+date-format: "MMMM D, YYYY [at] h:mm A z"
+published-title: "Most recent update"
+
+format:
+  html:
+    theme:
+      - flatly
+      - styles.scss
+    toc: true
+    toc-location: left
+    toc-title: Jump to
+    toc-depth: 3
+
+execute:
+  echo: false
+  warning: false
+  cache: false

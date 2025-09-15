@@ -1,0 +1,20 @@
+---
+title: "Presidential results"
+date: "`r targets::tar_read(last_updated)`"
+---
+
+```{r}
+library(tidyverse)
+library(targets)
+
+tar_load(c(presidential_table, presidential_map))
+invisible(list2env(tar_read(output_functions), .GlobalEnv))
+
+markdown_output <- build_race_output(
+  "US President", 
+  "presidential_table$tbl_out",
+  "presidential_map"
+)
+```
+
+`r knitr::knit(text = markdown_output)`

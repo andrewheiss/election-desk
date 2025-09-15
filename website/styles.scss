@@ -1,0 +1,132 @@
+/*-- scss:defaults --*/
+
+$primary-color: #224E74;
+$secondary-color: #10B4E5;
+$navbar-bg: #333333;
+$link-color: #1696d2;
+$republican: #db2b27;
+$democratic: #1696d2;
+$constitution: #b07aa1;
+$libertarian: #fdbf11;
+$nonpartisan: #b3ab95;
+$light-gray: #7d7f7c;
+
+/* new background colors - use primary-background with primary-color text */
+$primary-background: #dcf7ff;
+$secondary-background: #17354f;
+$light-gray-background: #f4f4f4;
+
+/*-- scss:rules --*/
+
+// h1, h2, h3, h4 {
+//    color: #224E74;
+//}
+
+h1 {
+  color: $primary-color;
+}
+
+h2 {
+  color: $primary-color;
+}
+
+h3 {
+  color: $primary-color;
+  background-image: linear-gradient(to right, #f4f4f4, #ffffff);
+  padding: 0.6rem;
+}
+
+h4 {
+  color: #817555;
+  font-weight: normal;
+  padding: 0.6rem;
+}
+
+/* Callout color changes */
+
+.callout {
+  color: $primary-color;
+  border-color: $primary-color;
+}
+
+div.callout-note.callout-style-default>.callout-header {
+  background-color: $primary-background;
+}
+
+.rt-th .rt-th-inner .rt-text-content {
+  font-weight: 400;
+  font-size: .9em;
+  color: #999999;
+}
+
+/* Button color changes */
+
+.btn-outline-primary {
+  --bs-btn-color: $primary-color;
+  --bs-btn-border-color: $primary-color;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: $primary-color;
+  --bs-btn-hover-border-color: $primary-color;
+  --bs-btn-focus-shadow-rgb: 44, 62, 80;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: $primary-color;
+  --bs-btn-active-border-color: $primary-color;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: $light-gray;
+  --bs-btn-disabled-bg: #f4f4f4;
+  --bs-btn-disabled-border-color: $light-gray;
+  --bs-gradient: none;
+  min-width: 50px;
+  margin: 5px;
+}
+
+.dropdown-menu {
+  --bs-dropdown-link-hover-bg: $primary-color;
+  --bs-dropdown-link-active-bg: $primary-color;
+}
+
+/* tab link color changes */
+
+.nav-tabs .nav-link {
+  color: $primary-color;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover, .nav-tabs .nav-item.open .nav-link, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover {
+  color: $secondary-color;
+}
+
+/* Back to top button - raise above tables */
+
+#quarto-back-to-top {
+  z-index: 100; 
+}
+
+/* Candidate Tooltip Changes */
+
+.table {
+  caption-side: top; //caption on top
+  border-bottom-width: 0; //remove bottom table border
+}
+
+.table thead {
+  display: none; //hide blank table header row
+}
+
+.table>:not(caption)>*>* {
+  border-bottom-width: 0; // removes original bottom border setting
+}
+
+.table tbody tr {
+  border-bottom-width: 1px; // adds bottom border between rows
+}
+
+.table tbody tr:last-child {
+  border-bottom-width: 0; // remove bottom border for last table row
+}
+
+@media (992px <= width <= 1174px )  {
+  // Stack navigation between 992px and 1174px wide
+  .navbar>.container, .navbar>.container-fluid, .navbar>.container-sm, .navbar>.container-md, .navbar>.container-lg, .navbar>.container-xl, .navbar>.container-xxl {
+    flex-direction: column;
+  }
+}

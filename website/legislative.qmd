@@ -1,0 +1,29 @@
+---
+title: Legislative results
+date: "`r targets::tar_read(last_updated)`"
+---
+
+```{r}
+library(tidyverse)
+library(targets)
+
+tar_load(c(district_tables, district_maps))
+invisible(list2env(tar_read(output_functions), .GlobalEnv))
+
+all_races <- tibble(
+  heading = map_chr(district_tables, \(x) x$race_title),
+  tbl = paste0("district_tables$", names(district_tables), "$tbl_out"),
+  mp = paste0("district_maps$", names(district_maps))
+) |> 
+  arrange(heading) |> 
+  mutate(district = str_extract(heading, "District \\d+")) |> 
+  group_by(district) |> 
+  mutate(district_nice = if_else(row_number() == 1, district, NA)) |> 
+  ungroup() |> 
+  mutate(markdown = pmap_chr(
+    lst(heading, tbl, mp, district = district_nice),
+    \(heading, tbl, mp, district) build_race_output(heading, tbl, mp, district)
+  ))
+```
+
+`r paste(knitr::knit(text = all_races$markdown), collapse = "\n")`

@@ -1,0 +1,25 @@
+---
+title: Congressional results
+date: "`r targets::tar_read(last_updated)`"
+---
+
+```{r}
+library(tidyverse)
+library(targets)
+
+tar_load(c(congressional_tables, congressional_maps))
+invisible(list2env(tar_read(output_functions), .GlobalEnv))
+
+all_races <- tibble(
+  heading = map_chr(congressional_tables, \(x) x$race_title),
+  tbl = paste0("congressional_tables$", names(congressional_tables), "$tbl_out"),
+  mp = paste0("congressional_maps$", names(congressional_maps))
+) |> 
+  arrange(heading) |> 
+  mutate(markdown = pmap_chr(
+    lst(heading, tbl, mp),
+    \(heading, tbl, mp) build_race_output(heading, tbl, mp)
+  ))
+```
+
+`r paste(knitr::knit(text = all_races$markdown), collapse = "\n")`
