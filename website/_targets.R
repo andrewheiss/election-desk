@@ -10,7 +10,17 @@ tar_option_set(
 )
 
 etl_file_target <- function(target_name) {
-  file.path("../etl-pipeline/_targets", "objects", target_name)
+  file_path <- file.path("../etl-pipeline/_targets", "objects", target_name)
+ 
+  if (!file.exists(file_path)) {
+    stop(
+      "ETL target '", target_name, "' not found.\n",
+      "  Please run the ETL pipeline first from ../etl-pipeline/\n",
+      "  It should then create ", file_path
+    )
+  }
+
+  file_path
 }
 
 # Source all the R scripts in the R/ folder
