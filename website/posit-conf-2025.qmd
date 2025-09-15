@@ -2,6 +2,7 @@
 title: "posit::conf(2025)"
 date: 2025-09-18T10:20-0400
 published-title: "Presented in Atlanta, Georgia"
+page-layout: full
 ---
 
 ## Slides
