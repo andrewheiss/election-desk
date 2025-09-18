@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Gabe Osterhout">
+<meta name="author" content="Andrew Heiss">
 
 <title>DIY Election Desk – Example election results</title>
 <style>
@@ -114,7 +116,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Jump to</h2>
    
   <ul>
-  <li><a href="#original-idaho-sites" id="toc-original-idaho-sites" class="nav-link active" data-scroll-target="#original-idaho-sites">Original Idaho sites</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link active" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
   </ul>
 </nav>
 </nav>
@@ -123,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -131,10 +134,31 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Gabe Osterhout </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Idaho Secretary of State
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Andrew Heiss </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Georgia State University
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
-    
+      
   
     
   </div>
@@ -144,12 +168,51 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="original-idaho-sites" class="level2">
-<h2 class="anchored" data-anchor-id="original-idaho-sites">Original Idaho sites</h2>
+<hr>
+<p>Use the <a href="https://www.tidyverse.org/">tidyverse</a>, <a href="https://books.ropensci.org/targets/">{targets}</a>, and <a href="https://quarto.org/">Quarto</a> to build your own lightning fast, auto-updating election results reporting website!</p>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<section id="original-idaho-sites" class="level4">
+<h4 class="anchored" data-anchor-id="original-idaho-sites">Original Idaho sites</h4>
 <ul>
 <li><a href="https://archive.voteidaho.gov/results/2024/primary/">Primary election</a> (May 2024)</li>
 <li><a href="https://archive.voteidaho.gov/results/2024/general/">General election</a> (November 2024)</li>
 </ul>
+</section>
+<section id="code" class="level4">
+<h4 class="anchored" data-anchor-id="code">Code</h4>
+<ul>
+<li><a href="https://github.com/andrewheiss/election-desk">See the exmaple code for both the ETL pipeline and the website pipeline</a></li>
+</ul>
+</section>
+<section id="positconf2025" class="level4">
+<h4 class="anchored" data-anchor-id="positconf2025">posit::conf(2025)</h4>
+<ul>
+<li><a href="./posit-conf-2025.html">See our posit::conf(2025) presentation</a></li>
+</ul>
+</section>
+<section id="other" class="level4">
+<h4 class="anchored" data-anchor-id="other">Other</h4>
+<ul>
+<li><a href="https://www.andrewheiss.com/blog/2024/11/04/render-generated-r-chunks-quarto/">Guide to generating and rendering computational markdown content programmatically with Quarto</a></li>
+</ul>
+</section>
+</section>
+<section id="overview" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This process has two independent moving parts (complete instructions for running each pipeline included in the projects’ respective READMEs):</p>
+<ol type="1">
+<li><p><a href="https://github.com/andrewheiss/election-desk/tree/main/etl-pipeline">The <code>etl-pipeline</code> project</a> runs every X minutes and is in charge of <strong>e</strong>xtracting, <strong>t</strong>ransforming, and <strong>l</strong>oading (ETL) the most recent data. With the magic of <a href="https://books.ropensci.org/targets/">{targets}</a>, it will only process remote data that has changed since the last time the pipeline ran. The final outputs (maps, results table, and reporting status) are stored remotely in an S3 bucket (though in this example, outputs are stored locally).</p></li>
+<li><p><a href="https://github.com/andrewheiss/election-desk/tree/main/website">The <code>website</code> project</a> runs every Y minutes and uses <a href="https://books.ropensci.org/targets/">{targets}</a> to pull the latest data from the S3 bucket (or here, local data storage for the ETL pipeline). It then re-builds and deploys the Quarto website (<em>this website!</em>) if needed.</p></li>
+</ol>
+<div class="page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="img/slide-flow.png" class="border img-fluid figure-img column-page-inset"></p>
+<figcaption>Overview of the two pipelines</figcaption>
+</figure>
+</div>
+</div>
 
 
 </section>

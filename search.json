@@ -11,14 +11,21 @@
     "href": "index.html",
     "title": "DIY Election Desk",
     "section": "",
-    "text": "Primary election (May 2024)\nGeneral election (November 2024)"
+    "text": "Use the tidyverse, {targets}, and Quarto to build your own lightning fast, auto-updating election results reporting website!"
   },
   {
-    "objectID": "index.html#original-idaho-sites",
-    "href": "index.html#original-idaho-sites",
+    "objectID": "index.html#resources",
+    "href": "index.html#resources",
     "title": "DIY Election Desk",
-    "section": "",
-    "text": "Primary election (May 2024)\nGeneral election (November 2024)"
+    "section": "Resources",
+    "text": "Resources\n\nOriginal Idaho sites\n\nPrimary election (May 2024)\nGeneral election (November 2024)\n\n\n\nCode\n\nSee the exmaple code for both the ETL pipeline and the website pipeline\n\n\n\nposit::conf(2025)\n\nSee our posit::conf(2025) presentation\n\n\n\nOther\n\nGuide to generating and rendering computational markdown content programmatically with Quarto"
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "DIY Election Desk",
+    "section": "Overview",
+    "text": "Overview\nThis process has two independent moving parts (complete instructions for running each pipeline included in the projects’ respective READMEs):\n\nThe etl-pipeline project runs every X minutes and is in charge of extracting, transforming, and loading (ETL) the most recent data. With the magic of {targets}, it will only process remote data that has changed since the last time the pipeline ran. The final outputs (maps, results table, and reporting status) are stored remotely in an S3 bucket (though in this example, outputs are stored locally).\nThe website project runs every Y minutes and uses {targets} to pull the latest data from the S3 bucket (or here, local data storage for the ETL pipeline). It then re-builds and deploys the Quarto website (this website!) if needed.\n\n\n\n\n\nOverview of the two pipelines"
   },
   {
     "objectID": "presidential.html",
