@@ -1,8 +1,46 @@
 ---
 title: "DIY Election Desk"
+author: 
+  - name: Gabe Osterhout
+    affiliation: Idaho Secretary of State
+  - name: Andrew Heiss
+    affiliation: Georgia State University
 ---
 
-## Original Idaho sites
+---
+
+Use the [tidyverse](https://www.tidyverse.org/), [{targets}](https://books.ropensci.org/targets/), and [Quarto](https://quarto.org/) to build your own lightning fast, auto-updating election results reporting website!
+
+## Resources
+
+#### Original Idaho sites
 
 - [Primary election](https://archive.voteidaho.gov/results/2024/primary/) (May 2024)
 - [General election](https://archive.voteidaho.gov/results/2024/general/) (November 2024)
+
+#### Code
+
+- [See the exmaple code for both the ETL pipeline and the website pipeline](https://github.com/andrewheiss/election-desk)
+
+#### posit::conf(2025)
+
+- [See our posit::conf(2025) presentation](/posit-conf-2025.qmd)
+
+#### Other
+
+- [Guide to generating and rendering computational markdown content programmatically with Quarto](https://www.andrewheiss.com/blog/2024/11/04/render-generated-r-chunks-quarto/)
+
+
+## Overview
+
+This process has two independent moving parts (complete instructions for running each pipeline included in the projects' respective READMEs):
+
+1. [The `etl-pipeline` project](https://github.com/andrewheiss/election-desk/tree/main/etl-pipeline) runs every X minutes and is in charge of **e**xtracting, **t**ransforming, and **l**oading (ETL) the most recent data. With the magic of [{targets}](https://books.ropensci.org/targets/), it will only process remote data that has changed since the last time the pipeline ran. The final outputs (maps, results table, and reporting status) are stored remotely in an S3 bucket (though in this example, outputs are stored locally).
+
+2. [The `website` project](https://github.com/andrewheiss/election-desk/tree/main/website) runs every Y minutes and uses [{targets}](https://books.ropensci.org/targets/) to pull the latest data from the S3 bucket (or here, local data storage for the ETL pipeline). It then re-builds and deploys the Quarto website (*this website!*) if needed.
+
+::: {.column-page-inset}
+
+![Overview of the two pipelines](img/slide-flow.png){.border}
+
+:::
