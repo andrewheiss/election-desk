@@ -6,7 +6,7 @@ project:
 website:
   search: false
   back-to-top-navigation: true
-  title: "Example election results"
+  title: "DIY Election Desk"
 
   announcement:
     icon: shield-exclamation
