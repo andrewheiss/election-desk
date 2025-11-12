@@ -5,6 +5,12 @@ published-title: "Presented in Atlanta, Georgia"
 page-layout: full
 ---
 
+## Video
+
+<div class="ratio ratio-16x9 mb-4">
+<iframe src="https://www.youtube.com/embed/UCloM4GcfVY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ## Slides
 
 <div class="ratio ratio-16x9">
